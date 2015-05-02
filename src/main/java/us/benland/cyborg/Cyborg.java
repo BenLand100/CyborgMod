@@ -17,6 +17,11 @@
 
 package us.benland.cyborg;
 
+import org.python.antlr.base.mod;
+
+import net.minecraft.block.Block;
+import us.benland.cyborg.tasks.BreakBlock;
+import us.benland.cyborg.tasks.Face;
 import us.benland.cyborg.tasks.WalkTo;
 
 public class Cyborg {
@@ -26,13 +31,39 @@ public class Cyborg {
 	public Cyborg(CyborgMod mod) {
 		this.mod = mod;
 	}
-    
+	
+	public double getX() {
+		return mod.p.getPosition(0.0f).xCoord;
+	}
+	
+	public double getY() {
+		return mod.p.getPosition(0.0f).yCoord;
+	}
+	
+	public double getZ() {
+		return mod.p.getPosition(0.0f).zCoord;
+	}
+	
+	public boolean lookAt(double x, double y, double z) {
+    	return mod.performTask(new Face(x,y,z)) == CyborgTask.State.SUCCESS;
+	}
+	
+	public boolean breakBlock() {
+    	return mod.performTask(new BreakBlock()) == CyborgTask.State.SUCCESS;
+	}
+	
     public boolean walkTo(int x, int y, int z) {
     	return mod.performTask(new WalkTo(x,y,z)) == CyborgTask.State.SUCCESS;
     }
     
     public int heightAt(int x, int z) {
     	return mod.w.getHeightValue(x, z);
+    }
+    
+    public int getBlockAt(int x, int y, int z) {
+    	if (Math.sqrt(x*x+y*y+z*z) > 50) return -1;
+    	Block b = mod.w.getBlock(x, y, z);
+    	return Block.getIdFromBlock(b);
     }
     
 }

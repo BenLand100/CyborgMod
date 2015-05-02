@@ -29,6 +29,10 @@ public class Face extends CyborgTask {
 		this.pitch = pitch;
 		this.yaw = yaw;
 	}
+	
+	public Face(double x, double y, double z) {
+		throw new RuntimeException("Not implemented");
+	}
 
 	@Override
 	public State tick(EntityPlayer p, World w) {
