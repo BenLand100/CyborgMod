@@ -1,0 +1,16 @@
+[
+{
+  "modid": "CyborgMod",
+  "name": "CyborgMod",
+  "description": "Turns your character into a cyborg!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["BenLand100"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
